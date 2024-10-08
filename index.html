@@ -4,6 +4,10 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>MindPal Task</title>
+
+      <link rel="stylesheet" href="css/note-container.css">
+      <link rel="stylesheet" href="css/note-item.css">
+
   </head>
   <body>
 
@@ -48,8 +52,10 @@
         })
 
         console.log(notes.getNotes());
+
+        notes.renderItems();
     </script>
 
-    <h1>Items list</h1>
+    <div id="notesContainer"></div>
   </body>
 </html>
