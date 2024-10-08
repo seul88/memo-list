@@ -1,26 +1,30 @@
-interface NoteDetails {
-    title: string;
-    body: string;
-    date: Date;
+class NoteDetails {
+    title;
+    body;
+    date;
 }
 
-interface Note extends NoteDetails {
-    id: string;
+class Note extends NoteDetails {
+    id;
 }
 
 export class NotesContainer {
 
-    notes: Note[];
+    notes;
 
     constructor() {
         this.notes = [];
     }
 
-    getNote(id: string) {
+    getNotes() {
+        return this.notes;
+    };
+
+    getNote(id) {
         return this.notes.filter(item => item.id === id);
     };
 
-    addNote(payload: NoteDetails) {
+    addNote(payload) {
         const id = crypto.randomUUID();
         this.notes.push({
             ...payload,
@@ -28,22 +32,22 @@ export class NotesContainer {
         });
     };
 
-    removeNote(id: string) {
+    removeNote() {
         console.log(id);
         const newArray = this.notes.filter(item => item.id !== id);
         this.notes = newArray;
     };
 
-    findNotes(text: string) {
+    filterNotes(text) {
         return this.notes.
             filter(item => item.title === text || item.body === text);
     };
 
-    editNote(id, details: NoteDetails) {
-        // const index = this.notes.findIndex(item => item.id === id);
-        // this.notes[index] = {
-        //     id,
-        //     ...details
-        // };
+    editNote(id, details) {
+        const index = this.notes.findIndex(item => item.id === id);
+        this.notes[index] = {
+            id,
+            ...details
+        };
     };
 };

@@ -1,8 +1,32 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>MindPal Task</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>MindPal Task</title>
   </head>
   <body>
+
+    <script type="module">
+        import { NotesContainer } from './notes/NotesContainer.js'
+        const notes = new NotesContainer();
+        
+        /* tests */
+        notes.addNote({
+          title: 'Test 1',
+          body: 'Test value input',
+          date: Date.now()
+        });
+        
+        notes.addNote({
+          title: 'Test 2',
+          body: 'Much more text value input',
+          date: Date.now()
+        });
+
+        console.log(notes.getNotes());
+    </script>
+
     <h1>Items list</h1>
   </body>
 </html>
