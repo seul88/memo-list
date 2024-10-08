@@ -22,3 +22,10 @@
     flex-direction: column;
     gap: 12px;
 }
+
+.action-button { 
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+}

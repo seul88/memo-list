@@ -30,15 +30,19 @@ export class NotesLayoutHandler {
             inputFormsContainer.appendChild(creationDate);
 
             /* ACTION BUTTONS */
-            const deleteNoteButton = document.createElement('div');
-            deleteNoteButton.textContent = 'delete';
+            const deleteNoteButton = document.createElement('img');
+            deleteNoteButton.src = '../images/delete.svg';
+            deleteNoteButton.classList.add('action-button');
+            deleteNoteButton.alt = 'Delete';
 
-            const editNoteButton = document.createElement('div');
-            editNoteButton.textContent = 'edit';
+            const editNoteButton = document.createElement('img');
+            editNoteButton.src = '../images/edit.svg';
+            editNoteButton.classList.add('action-button');
+            editNoteButton.alt = 'Edit';
 
             noteContainer.appendChild(inputFormsContainer);
-            noteContainer.appendChild(editNoteButton);
             noteContainer.appendChild(deleteNoteButton);
+            noteContainer.appendChild(editNoteButton);
 
             return noteContainer;
         });
