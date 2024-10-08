@@ -12,7 +12,8 @@
   <body>
 
     <script type="module">
-        import { NotesContainer } from './notes/NotesContainer.js'
+        import { NotesContainer } from './notes/NotesContainer.js';
+        import { NotesLayoutHandler } from './notes/NotesLayoutHandler.js';
         const notes = new NotesContainer();
         
         /* tests */
@@ -53,9 +54,13 @@
 
         console.log(notes.getNotes());
 
-        notes.renderItems();
-    </script>
+        const layoutHandler = new NotesLayoutHandler(notes);
 
-    <div id="notesContainer"></div>
+        layoutHandler.renderItems();
+    </script>
+    <div id="notesContainer">
+      <div id="notesList"></div>
+      
+    </div>
   </body>
 </html>

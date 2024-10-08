@@ -1,4 +1,11 @@
-#notesContainer{
+#notesContainer {
+    width: 410px;
+    padding: 16px;
+
+    border-radius: 12px;
+}
+
+#notesList {
     display: flex;
     flex-direction: column;
     gap: 16px;
