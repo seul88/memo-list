@@ -34,6 +34,15 @@ export class NotesLayoutHandler {
             deleteNoteButton.src = '../images/delete.svg';
             deleteNoteButton.classList.add('action-button');
             deleteNoteButton.alt = 'Delete';
+            
+            deleteNoteButton.onclick = () => {
+                this.notesContainer.removeNote(note.id);
+                const parentElement = document.getElementById("notesList");
+                while (parentElement.firstChild) {
+                    parentElement.removeChild(parentElement.firstChild);
+                }
+                this.renderItems();
+            };
 
             const editNoteButton = document.createElement('img');
             editNoteButton.src = '../images/edit.svg';
