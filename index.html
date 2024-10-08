@@ -14,6 +14,7 @@
     <script type="module">
         import { NotesContainer } from './notes/NotesContainer.js';
         import { NotesLayoutHandler } from './notes/NotesLayoutHandler.js';
+
         const notes = new NotesContainer();
         
         /* tests */
@@ -59,6 +60,14 @@
         layoutHandler.renderItems();
     </script>
     <div id="notesContainer">
+      
+      <img src="./images/info.svg" alt="Info"/>
+      <img src="./images/notes.svg" alt="Notes"/>
+      <img src="./images/note_add.svg" alt="Add note"/>
+      <img src="./images/delete.svg" alt="Delete"/>
+      <img src="./images/edit.svg" alt="Edit"/>
+        
+
       <div id="notesList"></div>
       
     </div>
