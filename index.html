@@ -24,6 +24,29 @@
           date: Date.now()
         });
 
+        notes.addNote({
+          title: 'Test 3',
+          body: 'Much more text value input x2 Much more text value input',
+          date: Date.now()
+        });
+
+        notes.addNote({
+          title: 'Test 4',
+          body: 'Random poem about shopping list',
+          date: Date.now()
+        });
+
+        console.log(notes.filterNotes('shopping'));
+        console.log(notes.filterNotes('3'));
+
+        const toRemove = notes.filterNotes('3')[0];
+        notes.removeNote(toRemove.id)
+
+        const toEdit = notes.filterNotes('shopping')[0];
+        notes.editNote(toEdit.id, {
+          title: 'After edition!!!'
+        })
+
         console.log(notes.getNotes());
     </script>
 

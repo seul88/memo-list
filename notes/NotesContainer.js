@@ -32,7 +32,7 @@ export class NotesContainer {
         });
     };
 
-    removeNote() {
+    removeNote(id) {
         console.log(id);
         const newArray = this.notes.filter(item => item.id !== id);
         this.notes = newArray;
@@ -40,13 +40,14 @@ export class NotesContainer {
 
     filterNotes(text) {
         return this.notes.
-            filter(item => item.title === text || item.body === text);
+            filter(item => item.title.includes(text) || item.body.includes(text));
     };
 
     editNote(id, details) {
         const index = this.notes.findIndex(item => item.id === id);
+        
         this.notes[index] = {
-            id,
+            ...this.notes[index],
             ...details
         };
     };
