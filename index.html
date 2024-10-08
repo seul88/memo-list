@@ -8,6 +8,10 @@
       <link rel="stylesheet" href="css/note-container.css">
       <link rel="stylesheet" href="css/note-item.css">
 
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
   </head>
   <body>
 
@@ -59,14 +63,17 @@
 
         layoutHandler.renderItems();
     </script>
+
     <div id="notesContainer">
-      
-      <img src="./images/info.svg" alt="Info"/>
-      <img src="./images/notes.svg" alt="Notes"/>
-      <img src="./images/note_add.svg" alt="Add note"/>
-      <img src="./images/delete.svg" alt="Delete"/>
-      <img src="./images/edit.svg" alt="Edit"/>
-        
+      <div class="header">
+        <img 
+          src="./images/notes.svg" 
+          alt="Notes" 
+          class="header-icon" 
+        />
+        <span>Notes</span>
+      </div>
+   
 
       <div id="notesList"></div>
       
