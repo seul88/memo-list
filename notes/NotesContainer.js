@@ -8,54 +8,43 @@ class Note extends NoteDetails {
     id;
 }
 
-export class MyComponent extends HTMLElement {
+export class NotesContainer extends HTMLElement {
+
+    _notes;
+    _filteredNotes;
+    _filterPhrase; // TODO: store search phrase and react to it's change
 
     constructor() {
         super();
-        this._opisy = [{title: 'test', body: 'test1', date: 'dummy'}]
-    }
-
-    get opisy() {
-        return this._opisy;
-    }
-
-    set opisy(opisy) {
-        this._opisy = opisy;
+        this._notes = [];
+        this._filteredNotes = [];
+        this._filterPhrase = '';
         this.render();
     }
 
     static get observedAttributes() {
-        return ['opisy'];
+        return ['notes', 'filteredNotes', 'filterPhrase'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        this._opisy = newValue;
-        this.render();
+        console.log('Update')
+        if (name === 'notes') {
+            console.log(newValue);
+        } else if (name === 'filteredNotes') {
+
+        } else if (name === 'filterPhrase') {
+
+        }
     }
 
-    connectedCallback() {
-        this.render();
-    };
-  
-  
-    render() {
-        this.innerHTML = `<h1>
-            ${this._opisy.map(item => `<div>
-                ${item.title}  ${item.body}  ${item.date}
-            </div>`).join('')}
-        </h1>`;
+    get notes() {
+        return this._notes;
     }
-  }
-  
-export class NotesContainer {
 
-    notes;
-    filteredNotes;
-    filterPhrase; // TODO: store search phrase and react to it's change
-
-    constructor() {
-        this.notes = [];
-        this.filteredNotes = [];
+    set notes(notes) {
+        this._notes = notes;
+        this.setAttribute('notes', JSON.stringify(notes));
+        this.render();
     }
 
     getNotes() {
@@ -68,24 +57,26 @@ export class NotesContainer {
 
     addNote(payload) {
         const id = crypto.randomUUID();
-
-        this.notes.push({
+        const newNotes = this._notes.push({
             ...payload,
             id
         });
 
+        this.setAttribute('notes', JSON.stringify(newNotes));
+        this.render();
+
         // temp solution
-        if (this.notes.length === 1) {
-            this.filteredNotes.push({
-                ...payload,
-                id
-            })
-        };
+        // if (this.notes.length === 1) {
+        //     this.filteredNotes.push({
+        //         ...payload,
+        //         id
+        //     })
+        // };
     };
 
     removeNote(id) {
         this.notes = this.notes.filter(item => item.id !== id);
-        this.filteredNotes = this.filteredNotes.filter(item => item.id !== id);
+        // this.filteredNotes = this.filteredNotes.filter(item => item.id !== id);
     };
 
     filterNotes(text) {
@@ -111,4 +102,12 @@ export class NotesContainer {
             ...details
         };
     };
+
+    render() {
+        // this.innerHTML = `<h1>
+        //     ${this._notes.map(item => `<div>
+        //         ${item.title}  ${item.body}  ${item.date}
+        //     </div>`).join('')}
+        // </h1>`;
+    }
 };

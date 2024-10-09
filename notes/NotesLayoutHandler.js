@@ -55,7 +55,7 @@ export class NotesLayoutHandler {
                     title: 'Mock',
                     body: 'Mock',
                     date: Date.now()
-                });
+                })
                 this.renderItems();
             };
 
@@ -66,7 +66,9 @@ export class NotesLayoutHandler {
         } else {
             const container = document.getElementById('notesList');
             console.log(this.notesContainer.filteredNotes)
-            const noteItems = this.notesContainer.filteredNotes.map(note => {
+
+            // todo: fix the filtering
+            const noteItems = this.notesContainer.notes.map(note => {
                 const noteContainer = document.createElement('div');
                 noteContainer.classList.add('note-item');
     

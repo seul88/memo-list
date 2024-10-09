@@ -16,78 +16,44 @@
   </head>
   <body>
     <script type="module">
-        import { NotesContainer, MyComponent } from './notes/NotesContainer.js';
+        import { NotesContainer } from './notes/NotesContainer.js';
         import { NotesLayoutHandler } from './notes/NotesLayoutHandler.js';
 
-        const notes = new NotesContainer();
-        
-        customElements.define('my-component', MyComponent);
+        customElements.define('notes-container', NotesContainer);
 
-        const myComponent = document.querySelector('my-component');
-
-        console.log(myComponent.opisy)
-
-        /* Setup mock data */
-        // notes.addNote({
-        //   title: 'Test 1',
-        //   body: 'Test value input',
-        //   date: Date.now()
-        // });
-        
-        // notes.addNote({
-        //   title: 'Test 2',
-        //   body: 'Much more text value input',
-        //   date: Date.now()
-        // });
-
-        // notes.addNote({
-        //   title: 'Test 3',
-        //   body: 'Much more text value input x2 Much more text value input',
-        //   date: Date.now()
-        // });
-
-        // notes.addNote({
-        //   title: 'Test 4',
-        //   body: 'Random poem about shopping list',
-        //   date: Date.now()
-        // });
-
-        notes.setFilteredNotes(notes.getNotes()); 
+        const notes = document.querySelector('notes-container');
+       
+        // TODO: fix filtering
+        // notes.setFilteredNotes(notes.getNotes()); 
 
         const layoutHandler = new NotesLayoutHandler(notes);
 
-        const source = document.getElementById('searchForm');
+        const searchFormElement = document.getElementById('searchForm');
 
         const inputHandler = function(e) {
           notes.filterNotes(e.target.value);
           layoutHandler.renderItems();
         };
 
-        source.addEventListener('input', inputHandler);
+        searchFormElement.addEventListener('input', inputHandler);
+
+        const addNoteButton = document.getElementById('createNoteButton');
+
+        const addNote = () => {
+          notes.addNote({
+            title: 'Mock',
+            body: 'Mock',
+            date: Date.now()
+          });
+          layoutHandler.renderItems();
+        };
+
+        addNoteButton.addEventListener('click', addNote);
 
         layoutHandler.renderItems();
-
-   
-
-
     </script>
 
-    <my-component></my-component>
-
-
-    <script >
-
-    let functionOnlick = () => {
-      const myArr = [
-          {title: 1, body: 2, date: 3},
-          {title: 2, body: 5, date: 7},
-         ]
-      
-        document.querySelector('my-component').opisy = myArr
-      }
-    </script>
-
-    <button onclick="functionOnlick()">dsadsad</button>
+    <notes-container></notes-container>
 
     <div id="notesContainer">
       <div class="header">
@@ -114,13 +80,14 @@
         </div>
       </div>
      
+
+
       <div class="createNoteContainer">
-        <button id="createNoteButton">
+        <button id="createNoteButton" onclick="addNote()">
           Add New
         </button>
       </div>
  
-
       <div id="no-notes-message"></div>
 
       <div id="notesList"></div>
