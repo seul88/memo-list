@@ -1,7 +1,9 @@
 #notesContainer {
     width: 410px;
     padding: 16px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     border-radius: 12px;
 }
 
@@ -15,7 +17,6 @@
     display: flex;
     gap: 8px;
     padding: 4px 16px;
-    margin-block: 10px;
 
     font-family: Inter;
     font-size: 20px;
@@ -28,4 +29,30 @@
 .header-icon {
     padding: 4px;
     width: 16px;
+}
+
+.search-row {
+    padding: 0 16px 0 16px;
+}
+
+.search-container {
+    display: flex;
+    gap: 12px;
+    padding: 8px 12px;
+    background-color: #EEEFF0;
+    border-radius: 12px;
+}
+
+#searchForm {
+    background-color: #EEEFF0;
+    border: none;
+    color: #5B5C5E;
+    line-height: 1.5em;;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+#searchForm:focus {
+    outline: none;
+    
 }
