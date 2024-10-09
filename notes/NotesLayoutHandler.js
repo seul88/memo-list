@@ -7,9 +7,17 @@ export class NotesLayoutHandler {
     }
 
     renderItems() {
+        console.log(this.notesContainer)
+
+        /* Clear displayed nodes before rerender */
+        const parentElement = document.getElementById("notesList");
+        while (parentElement.firstChild) {
+            parentElement.removeChild(parentElement.firstChild);
+        }
+
         const container = document.getElementById('notesList');
 
-        const noteItems = this.notesContainer.notes.map(note => {
+        const noteItems = this.notesContainer.filteredNotes.map(note => {
             const noteContainer = document.createElement('div');
             noteContainer.classList.add('note-item');
 
@@ -19,14 +27,17 @@ export class NotesLayoutHandler {
 
             const noteTitle = document.createElement('div');
             noteTitle.textContent = note.title;
+            noteTitle.classList.add('note-title-text');
             inputFormsContainer.appendChild(noteTitle);
 
             const noteBody = document.createElement('div');
             noteBody.textContent = note.body;
+            noteBody.classList.add('note-body-text');
             inputFormsContainer.appendChild(noteBody);
 
             const creationDate = document.createElement('div');
             creationDate.textContent = note.date;
+            creationDate.classList.add('note-date-text');
             inputFormsContainer.appendChild(creationDate);
 
             /* ACTION BUTTONS */

@@ -14,14 +14,13 @@
 
   </head>
   <body>
-
     <script type="module">
         import { NotesContainer } from './notes/NotesContainer.js';
         import { NotesLayoutHandler } from './notes/NotesLayoutHandler.js';
 
         const notes = new NotesContainer();
         
-        /* tests */
+        /* Setup mock data */
         notes.addNote({
           title: 'Test 1',
           body: 'Test value input',
@@ -46,20 +45,18 @@
           date: Date.now()
         });
 
-        console.log(notes.filterNotes('shopping'));
-        console.log(notes.filterNotes('3'));
-
-        const toRemove = notes.filterNotes('3')[0];
-        notes.removeNote(toRemove.id)
-
-        const toEdit = notes.filterNotes('shopping')[0];
-        notes.editNote(toEdit.id, {
-          title: 'After edition!!!'
-        })
-
-        console.log(notes.getNotes());
+        notes.setFilteredNotes(notes.getNotes()); 
 
         const layoutHandler = new NotesLayoutHandler(notes);
+
+        const source = document.getElementById('searchForm');
+
+        const inputHandler = function(e) {
+          notes.filterNotes(e.target.value);
+          layoutHandler.renderItems();
+        };
+
+        source.addEventListener('input', inputHandler);
 
         layoutHandler.renderItems();
     </script>
@@ -72,6 +69,14 @@
           class="header-icon" 
         />
         <span>Notes</span>
+      </div>
+      <div>
+        <!-- Search -->
+        
+         <input
+          id="searchForm"
+          type="text">
+        </input>
       </div>
    
 
