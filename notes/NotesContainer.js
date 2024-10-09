@@ -8,6 +8,45 @@ class Note extends NoteDetails {
     id;
 }
 
+export class MyComponent extends HTMLElement {
+
+    constructor() {
+        super();
+        this._opisy = [{title: 'test', body: 'test1', date: 'dummy'}]
+    }
+
+    get opisy() {
+        return this._opisy;
+    }
+
+    set opisy(opisy) {
+        this._opisy = opisy;
+        this.render();
+    }
+
+    static get observedAttributes() {
+        return ['opisy'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        this._opisy = newValue;
+        this.render();
+    }
+
+    connectedCallback() {
+        this.render();
+    };
+  
+  
+    render() {
+        this.innerHTML = `<h1>
+            ${this._opisy.map(item => `<div>
+                ${item.title}  ${item.body}  ${item.date}
+            </div>`).join('')}
+        </h1>`;
+    }
+  }
+  
 export class NotesContainer {
 
     notes;

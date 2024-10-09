@@ -16,11 +16,17 @@
   </head>
   <body>
     <script type="module">
-        import { NotesContainer } from './notes/NotesContainer.js';
+        import { NotesContainer, MyComponent } from './notes/NotesContainer.js';
         import { NotesLayoutHandler } from './notes/NotesLayoutHandler.js';
 
         const notes = new NotesContainer();
         
+        customElements.define('my-component', MyComponent);
+
+        const myComponent = document.querySelector('my-component');
+
+        console.log(myComponent.opisy)
+
         /* Setup mock data */
         // notes.addNote({
         //   title: 'Test 1',
@@ -61,7 +67,27 @@
 
         layoutHandler.renderItems();
 
+   
+
+
     </script>
+
+    <my-component></my-component>
+
+
+    <script >
+
+    let functionOnlick = () => {
+      const myArr = [
+          {title: 1, body: 2, date: 3},
+          {title: 2, body: 5, date: 7},
+         ]
+      
+        document.querySelector('my-component').opisy = myArr
+      }
+    </script>
+
+    <button onclick="functionOnlick()">dsadsad</button>
 
     <div id="notesContainer">
       <div class="header">
