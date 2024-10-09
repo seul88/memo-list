@@ -56,3 +56,21 @@
 #searchForm:focus {
     outline: none;
 }
+
+#createNoteButton {
+    width: 376px;
+    padding: 8px 16px;
+    line-height: 1.5em;
+
+    border-radius: 12px;
+    background: #6B3C9B;
+    color: #FFFFFF;
+    border: none;
+
+    cursor: pointer;
+}
+
+.createNoteContainer {
+    width: 100%;
+    text-align: center;
+}
