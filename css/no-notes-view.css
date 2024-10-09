@@ -1,0 +1,53 @@
+#no-notes-message {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 36px;
+    padding-inline: 30px;
+
+    align-self: center;
+    text-align: center;
+    max-width: 60%;
+}
+
+.info-image {
+    width: 50px;
+    align-self: center;
+}
+
+.no-notes-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.no-notes-header {
+    font-size: 1.25em;
+    color: #1B1C1E;
+    line-height: 1.875em;
+    font-weight: 500;
+}
+
+.no-notes-info {
+    font-weight: 400;
+    line-height: 1.6em;
+}
+
+.add-note-button {
+    width: 137px;
+    height: 40px;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: 1px solid #BCBCBD;
+
+    align-self: center;
+
+}
+
+.button-items {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}

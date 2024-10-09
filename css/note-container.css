@@ -21,7 +21,8 @@
     font-family: Inter;
     font-size: 20px;
     font-weight: 500;
-    line-height: 30px;
+    line-height: 1.875em;
+
     text-align: left;
     color: #1B1C1E;
 }
@@ -54,5 +55,4 @@
 
 #searchForm:focus {
     outline: none;
-    
 }

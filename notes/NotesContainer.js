@@ -12,6 +12,7 @@ export class NotesContainer {
 
     notes;
     filteredNotes;
+    filterPhrase; // TODO: store search phrase and react to it's change
 
     constructor() {
         this.notes = [];
@@ -28,10 +29,19 @@ export class NotesContainer {
 
     addNote(payload) {
         const id = crypto.randomUUID();
+
         this.notes.push({
             ...payload,
             id
         });
+
+        // temp solution
+        if (this.notes.length === 1) {
+            this.filteredNotes.push({
+                ...payload,
+                id
+            })
+        };
     };
 
     removeNote(id) {
