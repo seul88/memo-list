@@ -12,18 +12,18 @@ export class NotesContainer extends HTMLElement {
 
     _notes;
     _filteredNotes;
-    _filterPhrase; // TODO: store search phrase and react to it's change
+    _searchPhrase; // TODO: store search phrase and react to it's change
 
     constructor() {
         super();
         this._notes = [];
         this._filteredNotes = [];
-        this._filterPhrase = '';
+        this._searchPhrase = '';
         this.render();
     }
 
     static get observedAttributes() {
-        return ['notes', 'filteredNotes', 'filterPhrase'];
+        return ['notes', 'filteredNotes', 'searchPhrase'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -32,8 +32,8 @@ export class NotesContainer extends HTMLElement {
             console.log(newValue);
         } else if (name === 'filteredNotes') {
 
-        } else if (name === 'filterPhrase') {
-
+        } else if (name === 'searchPhrase') {
+            console.log('SEARCH PHRASE UPDATE')
         }
     }
 
@@ -44,7 +44,6 @@ export class NotesContainer extends HTMLElement {
     set notes(notes) {
         this._notes = notes;
         this.setAttribute('notes', JSON.stringify(notes));
-        this.render();
     }
 
     getNotes() {
@@ -63,21 +62,24 @@ export class NotesContainer extends HTMLElement {
         });
 
         this.setAttribute('notes', JSON.stringify(newNotes));
-        this.render();
-
-        // temp solution
-        // if (this.notes.length === 1) {
-        //     this.filteredNotes.push({
-        //         ...payload,
-        //         id
-        //     })
-        // };
     };
 
     removeNote(id) {
         this.notes = this.notes.filter(item => item.id !== id);
         // this.filteredNotes = this.filteredNotes.filter(item => item.id !== id);
     };
+
+    setSearchPhrase(searchPhrase) {
+        this._searchPhrase = searchPhrase;
+        this.setAttribute('searchPhrase', searchPhrase);
+        if (searchPhrase.length) {
+            this._filteredNotes = this._notes.
+                filter(item => item.title.includes(searchPhrase) || item.body.includes(searchPhrase));
+        } else {
+            this._filteredNotes = this._notes;
+        }
+        this.setAttribute('_filteredNotes', JSON.stringify(this._filteredNotes));
+    }
 
     filterNotes(text) {
         this.filteredNotes = this.notes.

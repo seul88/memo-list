@@ -22,16 +22,38 @@
         customElements.define('notes-container', NotesContainer);
 
         const notes = document.querySelector('notes-container');
-       
-        // TODO: fix filtering
-        // notes.setFilteredNotes(notes.getNotes()); 
+
+        /* Setup mock data */
+        notes.addNote({
+          title: 'Test 1',
+          body: 'Test value input',
+          date: Date.now()
+        });
+        
+        notes.addNote({
+          title: 'Test 2',
+          body: 'Much more text value input',
+          date: Date.now()
+        });
+
+        notes.addNote({
+          title: 'Test 3',
+          body: 'Much more text value input x2 Much more text value input',
+          date: Date.now()
+        });
+
+        notes.addNote({
+          title: 'Test 4',
+          body: 'Random poem about shopping list',
+          date: Date.now()
+        });
 
         const layoutHandler = new NotesLayoutHandler(notes);
 
         const searchFormElement = document.getElementById('searchForm');
 
         const inputHandler = function(e) {
-          notes.filterNotes(e.target.value);
+          notes.setSearchPhrase(e.target.value);
           layoutHandler.renderItems();
         };
 
@@ -79,8 +101,6 @@
           </input>
         </div>
       </div>
-     
-
 
       <div class="createNoteContainer">
         <button id="createNoteButton" onclick="addNote()">
