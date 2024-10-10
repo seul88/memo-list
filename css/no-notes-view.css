@@ -1,13 +1,11 @@
-#no-notes-message {
+.no-notes-message {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding: 36px;
-    padding-inline: 30px;
+    padding: 36px 66px;
 
     align-self: center;
     text-align: center;
-    max-width: 60%;
 }
 
 .info-image {

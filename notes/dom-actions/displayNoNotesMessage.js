@@ -1,5 +1,8 @@
 export const displayNoNotesMessage = (notesContainer) => {
-    const container = document.getElementById('no-notes-message');
+    const noNotesDiv = document.getElementById('no-notes-message');
+
+    const container = document.createElement('div');
+    container.classList.add('no-notes-message');
 
     const noNotesIcon = document.createElement('img');
     noNotesIcon.src = '../images/info.svg';
@@ -39,4 +42,5 @@ export const displayNoNotesMessage = (notesContainer) => {
     container.appendChild(noNotesIcon);
     container.appendChild(noNotesTextContainer);
     container.appendChild(addNoteButton);
+    noNotesDiv.appendChild(container);
 };
