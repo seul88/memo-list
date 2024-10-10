@@ -1,6 +1,7 @@
 import { addNoteToDOM } from './dom-actions/addNoteToDOM.js';
 import { displayNoNotesMessage } from './dom-actions/displayNoNotesMessage.js';
 import { hideNoNotesMessage } from './dom-actions/hideNoNotesMessage.js';
+import { filterNotes } from './dom-actions/filterNotes.js';
 
 class NoteDetails {
     title;
@@ -24,7 +25,7 @@ export class NotesContainer extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['notes', 'searchPhrase'];
+        return ['notes', 'searchphrase'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -34,8 +35,8 @@ export class NotesContainer extends HTMLElement {
             } else {
                 hideNoNotesMessage();
             }
-        } else if (name === 'searchPhrase') {
-
+        } else if (name === 'searchphrase') {
+            filterNotes(newValue, this);
         }
     }
 
