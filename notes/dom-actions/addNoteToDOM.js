@@ -22,7 +22,9 @@ export const addNoteToDOM = (newNote, notesContainer) => {
   inputFormsContainer.appendChild(noteBody);
 
   const creationDate = document.createElement('div');
-  creationDate.textContent = newNote.date;
+  const dateOptions = { month: 'long', day: 'numeric' };
+  const date = new Date(newNote.date);
+  creationDate.textContent = date.toLocaleDateString('en-US', dateOptions);
   creationDate.classList.add('note-date-text');
   inputFormsContainer.appendChild(creationDate);
 
