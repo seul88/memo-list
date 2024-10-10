@@ -15,12 +15,17 @@ export class EditNoteView extends HTMLElement {
         return ['title', 'body'];
     }
 
+    attributeChangedCallback(name, oldValue, newValue) {
+        this.render();
+    }
+
     get title() {
         return this._title;
     }
 
     set title(title) {
         this._title = title;
+        // this.setAttribute('title', title);
     }
 
     get body() {
@@ -29,12 +34,10 @@ export class EditNoteView extends HTMLElement {
 
     set body(body) {
         this._body = body;
+        // this.setAttribute('body', body);
     }
 
     onCancelClick() {
-        this._title = '';
-        this._body = '';
-        /* TODO: restore default view */ 
         this.clean();
     }
 
@@ -56,10 +59,7 @@ export class EditNoteView extends HTMLElement {
             date: Date.now()
         });
         */ 
-        /* TODO: restore default view */ 
-        this._title = '';
-        this._body = '';
-        this.clean();
+        this.clean(); // todo: split the function to save case & cancel case
     };
 
     loadStyles() {
@@ -73,7 +73,8 @@ export class EditNoteView extends HTMLElement {
     }
 
     render() {
-        this.innerHTML = '';
+        this.shadowRoot.innerHTML = '';
+        this.loadStyles();
         const container = document.createElement('div');
         container.id = 'editNoteForm';
 
@@ -94,15 +95,17 @@ export class EditNoteView extends HTMLElement {
         container.appendChild(headerRow);
 
         const titleForm = document.createElement('input');
-        titleForm.oninput = (e) => this.onTitleChange(e.target.value);
+        titleForm.onblur = (e) => this.onTitleChange(e.target.value);
         titleForm.placeholder = 'Note title';
+        titleForm.defaultValue = this._title;
         titleForm.classList.add('edit-note-input-form');
         container.appendChild(titleForm);
 
         const bodyForm = document.createElement('textarea');
         bodyForm.rows = 7;
-        bodyForm.oninput = (e) => this.onBodyChange(e.target.value);
+        bodyForm.onblur = (e) => this.onBodyChange(e.target.value);
         bodyForm.placeholder = 'Your note';
+        bodyForm.defaultValue = this._body;
         bodyForm.classList.add('edit-note-input-form');
         container.appendChild(bodyForm);
 
@@ -118,15 +121,12 @@ export class EditNoteView extends HTMLElement {
     clean() {
         this.shadowRoot.innerHTML = '';
         this.loadStyles();
-
-        // todo: add default view 
         
-        /* temp values */
         const newNote = {
-            title: 'temp',
-            body: 'temp', 
+            title: this._title,
+            body: this._body, 
             date: new Date()
-        }
+        };
         const noteContainer = document.createElement('div');
         noteContainer.classList.add('edit-note-wrapper');
         noteContainer.id = newNote.id;
@@ -163,14 +163,16 @@ export class EditNoteView extends HTMLElement {
         editNoteButton.src = '../images/edit.svg';
         editNoteButton.classList.add('action-button');
         editNoteButton.alt = 'Edit';
-        editNoteButton.onclick = () => editNote(newNote, notesContainer);
+        editNoteButton.onclick = () => editNote(newNote);
       
         noteContainer.appendChild(inputFormsContainer);
         noteContainer.appendChild(deleteNoteButton);
         noteContainer.appendChild(editNoteButton);
       
         this.shadowRoot.appendChild(noteContainer);
-
+        
+        this._title = '';
+        this._body = '';
     }
 }
 

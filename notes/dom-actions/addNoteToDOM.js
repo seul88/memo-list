@@ -40,7 +40,7 @@ export const addNoteToDOM = (newNote, notesContainer) => {
   editNoteButton.src = '../images/edit.svg';
   editNoteButton.classList.add('action-button');
   editNoteButton.alt = 'Edit';
-  editNoteButton.onclick = () => editNote(newNote, notesContainer);
+  editNoteButton.onclick = () => editNote(newNote);
 
   noteContainer.appendChild(inputFormsContainer);
   noteContainer.appendChild(deleteNoteButton);

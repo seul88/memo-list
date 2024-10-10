@@ -1,15 +1,17 @@
-export const editNote = (note, notesContainer) => {
+export const editNote = (note) => {
 
     const id = note.id;
     const noteElement = document.getElementById(id);
 
-    // create web component
     const editComponent = document.createElement('edit-note-view');
+
+    editComponent.title = note.title;
+    editComponent.body = note.body;
+   
+    editComponent.setAttribute('title', note.title);
+    editComponent.setAttribute('body', note.body);
 
     noteElement.innerHTML = '';
 
-    // TODO: fill it with values
-
     noteElement.appendChild(editComponent);
-
 };
