@@ -1,3 +1,7 @@
+import { addNoteToDOM } from './dom-actions/addNoteToDOM.js';
+import { displayNoNotesMessage } from './dom-actions/displayNoNotesMessage.js';
+import { hideNoNotesMessage } from './dom-actions/hideNoNotesMessage.js';
+
 class NoteDetails {
     title;
     body;
@@ -24,9 +28,12 @@ export class NotesContainer extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-
         if (name === 'notes') {
-
+            if (JSON.parse(newValue).length  === 0) {
+                displayNoNotesMessage(this);
+            } else {
+                hideNoNotesMessage();
+            }
         } else if (name === 'searchPhrase') {
 
         }
@@ -51,12 +58,15 @@ export class NotesContainer extends HTMLElement {
 
     addNote(payload) {
         const id = crypto.randomUUID();
-        const newNotes = this._notes.push({
+        const newNote = {
             ...payload,
             id
-        });
+        }
+        const newNotes = this._notes.push(newNote);
 
         this.setAttribute('notes', JSON.stringify(newNotes));
+        
+        addNoteToDOM(newNote, this);
     };
 
     removeNote(id) {

@@ -54,7 +54,7 @@
 
         const inputHandler = function(e) {
           notes.setSearchPhrase(e.target.value);
-          layoutHandler.renderItems();
+          // layoutHandler.renderItems();
         };
 
         searchFormElement.addEventListener('input', inputHandler);
@@ -67,12 +67,12 @@
             body: 'Mock',
             date: Date.now()
           });
-          layoutHandler.renderItems();
+        //  layoutHandler.renderItems();
         };
 
         addNoteButton.addEventListener('click', addNote);
 
-        layoutHandler.renderItems();
+        //layoutHandler.renderItems();
     </script>
 
 
