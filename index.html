@@ -17,11 +17,12 @@
   <body>
     <script type="module">
         import { NotesContainer } from './notes/NotesContainer.js';
-        import { NotesLayoutHandler } from './notes/NotesLayoutHandler.js';
+        import { AddNoteView } from './notes/AddNoteView.js';
 
         customElements.define('notes-container', NotesContainer);
 
         const notes = document.querySelector('notes-container');
+
 
         /* Setup mock data */
         notes.addNote({
@@ -48,20 +49,24 @@
           date: Date.now()
         });
 
-        const layoutHandler = new NotesLayoutHandler(notes);
-
         const searchFormElement = document.getElementById('searchForm');
 
         const inputHandler = function(e) {
           notes.setSearchPhrase(e.target.value);
-          // layoutHandler.renderItems();
         };
 
         searchFormElement.addEventListener('input', inputHandler);
 
         const addNoteButton = document.getElementById('createNoteButton');
 
+        customElements.define('add-note-view', AddNoteView);
+
+        const addNoteView = document.querySelector('add-note-view');
+
         const addNote = () => {
+          console.log(addNoteView._shouldrender)
+          addNoteView.shouldrender = true;
+          
           notes.addNote({
             title: 'Mock',
             body: 'Mock',
@@ -106,7 +111,8 @@
  
       <notes-container></notes-container>
 
-
+      <add-note-view></add-note-view>
+      
       <div id="no-notes-message"></div>
 
       <div id="notesList"></div>

@@ -3,16 +3,6 @@ import { displayNoNotesMessage } from './dom-actions/displayNoNotesMessage.js';
 import { hideNoNotesMessage } from './dom-actions/hideNoNotesMessage.js';
 import { filterNotes } from './dom-actions/filterNotes.js';
 
-class NoteDetails {
-    title;
-    body;
-    date;
-}
-
-class Note extends NoteDetails {
-    id;
-}
-
 export class NotesContainer extends HTMLElement {
 
     _notes;
@@ -76,7 +66,7 @@ export class NotesContainer extends HTMLElement {
 
     setSearchPhrase(searchPhrase) {
         this._searchPhrase = searchPhrase;
-        this.setAttribute('searchPhrase', searchPhrase);
+        this.setAttribute('searchphrase', searchPhrase);
     }
 
     editNote(id, details) {
