@@ -9,6 +9,7 @@
       <link rel="stylesheet" href="css/note-item.css">
       <link rel="stylesheet" href="css/no-notes-view.css">
       <link rel="stylesheet" href="css/add-note.css">
+      <link rel="stylesheet" href="css/delete-note.css">
 
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +24,6 @@
         customElements.define('notes-container', NotesContainer);
 
         const notes = document.querySelector('notes-container');
-
 
         /* Setup mock data */
         notes.addNote({
@@ -71,7 +71,6 @@
         addNoteButton.addEventListener('click', addNote);
     </script>
 
-
     <div id="notesContainer">
       <div class="header">
         <img 
@@ -102,8 +101,10 @@
           Add New
         </button>
       </div>
- 
-      <notes-container></notes-container>
+
+      <notes-container>
+        
+      </notes-container>
 
       <add-note-view></add-note-view>
       

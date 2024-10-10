@@ -1,0 +1,41 @@
+dialog {
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1;
+}
+
+.dialog-container {
+    position: relative;
+    z-index: 2;
+}
+
+.delete-note-modal {
+
+}
+
+.delete-note-container {
+
+}
+
+.delete-note-buttons-wrapper {
+
+}
+
+.delete-note-apply-button{
+
+}
+
+.delete-note-cancel-button {
+
+}
