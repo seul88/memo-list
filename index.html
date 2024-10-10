@@ -20,8 +20,9 @@
     <script type="module">
         import { NotesContainer } from './notes/NotesContainer.js';
         import { AddNoteView } from './notes/AddNoteView.js';
-
-        customElements.define('notes-container', NotesContainer);
+        import { EditNoteView } from './notes/EditNoteView.js'
+     
+      customElements.define('notes-container', NotesContainer);
 
         const notes = document.querySelector('notes-container');
 
@@ -69,6 +70,9 @@
         };
 
         addNoteButton.addEventListener('click', addNote);
+
+        customElements.define('edit-note-view', EditNoteView);
+
     </script>
 
     <div id="notesContainer">
@@ -102,9 +106,7 @@
         </button>
       </div>
 
-      <notes-container>
-        
-      </notes-container>
+      <notes-container></notes-container>
 
       <add-note-view></add-note-view>
       

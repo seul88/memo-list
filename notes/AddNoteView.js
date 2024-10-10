@@ -120,7 +120,7 @@ export class AddNoteView extends HTMLElement {
     
             this.appendChild(container);
         } else {
-            document.getElementById('addNoteForm')?.remove()
+            document.getElementById('addNoteForm')?.remove();
         }
     }
 };

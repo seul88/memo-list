@@ -1,4 +1,5 @@
 import { removeNoteFromDOM } from './removeNoteFromDOM.js';
+import { editNote } from './editNote.js';
 
 export const addNoteToDOM = (newNote, notesContainer) => {
   const container = document.getElementById('notesList');
@@ -39,6 +40,7 @@ export const addNoteToDOM = (newNote, notesContainer) => {
   editNoteButton.src = '../images/edit.svg';
   editNoteButton.classList.add('action-button');
   editNoteButton.alt = 'Edit';
+  editNoteButton.onclick = () => editNote(newNote, notesContainer);
 
   noteContainer.appendChild(inputFormsContainer);
   noteContainer.appendChild(deleteNoteButton);
