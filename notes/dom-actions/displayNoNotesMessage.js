@@ -33,11 +33,13 @@ export const displayNoNotesMessage = (notesContainer) => {
         <div>Add Note</div>
     </div>`;
 
-    addNoteButton.onclick = () => notesContainer.addNote({
-        title: 'Mock value',
-        body: 'Mock value',
-        date: Date.now()
-    });
+    const addNoteView = document.querySelector('add-note-view');
+
+    const addNote = () => {
+        addNoteView.shouldrender = true;
+    };
+
+    addNoteButton.addEventListener('click', addNote);
 
     container.appendChild(noNotesIcon);
     container.appendChild(noNotesTextContainer);

@@ -38,7 +38,6 @@ export class AddNoteView extends HTMLElement {
     } 
 
     attributeChangedCallback(name, oldValue, newValue) {
-        console.log('UPDATE')
         if (name === 'shouldrender') {
             this._shouldrender = newValue;
             this.render();
