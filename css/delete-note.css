@@ -1,7 +1,10 @@
 dialog {
+    width: 296px;
+
     border: none;
-    border-radius: 5px;
-    padding: 20px;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0px 6px 4px 0px #00000026;
 }
 
 .dialog-overlay {
@@ -25,17 +28,52 @@ dialog {
 }
 
 .delete-note-container {
-
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .delete-note-buttons-wrapper {
 
 }
 
-.delete-note-apply-button{
+.delete-note-apply-button {
+    border-radius: 12px;
+    padding: 8px 16px;
+    border: none;
 
+    background-color: #6B3C9B;
+    color: white;
+    cursor: pointer;
+}
+
+.delete-note-apply-button:hover {
+    background-color: #844DBA;
 }
 
 .delete-note-cancel-button {
+    border-radius: 12px;
+    padding: 8px 16px;
+    border: 1px solid #BCBCBD;
+    background-color: white;
+    cursor: pointer;
+}
+
+.delete-note-cancel-button:hover {
+    background-color: #E7E7E7;
+}
+
+.delete-note-header-text {
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    color: #1B1C1E;
+}
+
+.delete-note-info-text {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.625rem;
+    color: #1B1C1E;
 
 }

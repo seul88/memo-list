@@ -43,6 +43,11 @@
 
 }
 
+.add-note-button:hover {
+    background-color: rgba(231, 231, 231, 1);
+    cursor: pointer;
+}
+
 .button-items {
     display: flex;
     gap: 8px;

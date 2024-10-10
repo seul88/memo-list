@@ -18,27 +18,29 @@ export const removeNoteFromDOM = (note, notesContainer) => {
 
     const dialog = document.createElement('dialog');
     dialog.id = `delete-dialog-${note.id}`;
+
     const deleteNoteWrapper = document.createElement('div');
+    deleteNoteWrapper.classList.add('delete-note-container');
 
     const deleteNoteHeader = document.createElement('div');
     deleteNoteHeader.textContent = 'Delete Note';
-    // add class
+    deleteNoteHeader.classList.add('delete-note-header-text');
     deleteNoteWrapper.appendChild(deleteNoteHeader);
 
     const deleteNoteInfo = document.createElement('div');
     deleteNoteInfo.textContent = 'Are you sure you want to delete this note?';
-    // add class 
+    deleteNoteInfo.classList.add('delete-note-info-text');
     deleteNoteWrapper.appendChild(deleteNoteInfo);
 
     const cancelButton = document.createElement('button');
     cancelButton.textContent = 'Cancel'
-    // add class
+    cancelButton.classList.add('delete-note-cancel-button');
     cancelButton.onclick = () => onClose(dialog);
     deleteNoteWrapper.appendChild(cancelButton);
 
     const applyButton = document.createElement('button');
     applyButton.textContent = 'Delete'
-    // add class
+    applyButton.classList.add('delete-note-apply-button');
     applyButton.onclick = () => {
         deleteNote(note);
         onClose(dialog);
