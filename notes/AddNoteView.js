@@ -2,13 +2,11 @@ export class AddNoteView extends HTMLElement {
 
     _title;
     _body;
-    _date;
     _shouldrender;
 
     constructor() {
         super();
         this._title = '';
-        this._date = new Date();
         this._body = '';
         this._shouldrender = false;
         this.render();
@@ -18,8 +16,23 @@ export class AddNoteView extends HTMLElement {
         return ['title', 'body', 'shouldrender'];
     }
 
+    get title() {
+        return this._title;
+    }
+
+    set title(title) {
+        this._title = title;
+    }
+
+    get body() {
+        return this._body;
+    }
+
+    set body(body) {
+        this._body = body;
+    }
+
     set shouldrender(shouldrender) {
-        console.log('setting')
         this._shouldrender = shouldrender;
         this.setAttribute('shouldrender', shouldrender);
     } 
@@ -33,21 +46,26 @@ export class AddNoteView extends HTMLElement {
     }
 
     onCancelClick() {
-        console.log('Cancel')
         this._shouldrender = false;
         this.render();
     }
 
     onTitleChange(text) {
-        console.log(text);
+        this.title = text;
     }
 
     onBodyChange(text) {
-        console.log(text);
+        this.body = text;
     }
 
     onSaveClick() {
-        console.log('Save')
+        const notes = document.querySelector('notes-container');
+        notes.addNote({
+            title: this.title,
+            body: this.body, 
+            date: Date.now()
+        })
+
         this._shouldrender = false;
         this.render();
     }

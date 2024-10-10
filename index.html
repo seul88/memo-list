@@ -64,14 +64,7 @@
         const addNoteView = document.querySelector('add-note-view');
 
         const addNote = () => {
-          console.log(addNoteView._shouldrender)
           addNoteView.shouldrender = true;
-          
-          notes.addNote({
-            title: 'Mock',
-            body: 'Mock',
-            date: Date.now()
-          });
         };
 
         addNoteButton.addEventListener('click', addNote);
