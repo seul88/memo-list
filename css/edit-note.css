@@ -69,3 +69,11 @@
 .edit-note-save-button:hover {
     background-color: #844DBA;
 }
+
+.edit-note-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    width: 370px;
+    gap: 16px;
+}
