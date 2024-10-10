@@ -1,0 +1,65 @@
+#addNoteForm{
+    display: flex;
+    flex-direction: column;
+
+    width: 376px;
+
+    padding: 20px 16px;
+    gap: 16px;
+
+    border: 1px 0px;
+    border-color: #EEEFF0;
+    box-shadow: 0px 0px 16px 0px #00000014;
+
+}
+
+.add-note-title-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-note-header-text {
+    size: 1rem;
+    line-height: 1.5rem;
+    color: #1B1C1E;
+    font-weight: 500;
+}
+
+.add-note-cancel-button {
+    font-weight: 400;
+    color: #0F75B8;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    
+}
+
+.and-note-input-form {
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: #EEEFF0;
+    color: #5B5C5E;
+
+    font-weight: 400;
+    line-height: 1,625em;
+    border: none;
+    outline: none;
+}
+
+.add-note-save-button {
+    width: 70px;
+    height: 40px;
+    border-radius: 12px;
+    margin-left: auto;
+
+    line-height: 1.5em;
+    font-size: 1rem;
+
+    background: #6B3C9B;
+    color: #FFFFFF;
+    border: none;
+
+    cursor: pointer;
+}
