@@ -1,7 +1,7 @@
-import { addNoteToDOM } from './dom-actions/create/addNoteToDOM.js';
-import { displayNoNotesMessage } from './dom-actions/no-notes/displayNoNotesMessage.js';
-import { hideNoNotesMessage } from './dom-actions/no-notes/hideNoNotesMessage.js';
-import { filterNotes } from './dom-actions/filter/filterNotes.js';
+import { addNoteToDOM } from '../../dom-actions/create/addNoteToDOM.js';
+import { displayNoNotesMessage } from '../../dom-actions/no-notes/displayNoNotesMessage.js';
+import { hideNoNotesMessage } from '../../dom-actions/no-notes/hideNoNotesMessage.js';
+import { filterNotes } from '../../dom-actions/filter/filterNotes.js';
 
 export class NotesContainer extends HTMLElement {
 

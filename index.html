@@ -4,78 +4,21 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>MindPal Task</title>
-
       <link rel="stylesheet" href="css/global.css">
       <link rel="stylesheet" href="css/note-container.css">
       <link rel="stylesheet" href="css/note-item.css">
       <link rel="stylesheet" href="css/no-notes-view.css">
       <link rel="stylesheet" href="css/add-note.css">
       <link rel="stylesheet" href="css/delete-note.css">
-
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-
   </head>
   <body>
     <script type="module">
-        import { NotesContainer } from './notes/NotesContainer.js';
-        import { AddNoteView } from './notes/AddNoteView.js';
-        import { EditNoteView } from './notes/EditNoteView.js'
-     
-      customElements.define('notes-container', NotesContainer);
-
-        const notes = document.querySelector('notes-container');
-
-        /* Setup mock data */
-        notes.addNote({
-          title: 'Test 1',
-          body: 'Test value input',
-          date: Date.now()
-        });
-        
-        notes.addNote({
-          title: 'Test 2',
-          body: 'Much more text value input',
-          date: Date.now()
-        });
-
-        notes.addNote({
-          title: 'Test 3',
-          body: 'Much more text value input x2 Much more text value input',
-          date: Date.now()
-        });
-
-        notes.addNote({
-          title: 'Test 4',
-          body: 'Random poem about shopping list',
-          date: Date.now()
-        });
-
-        const searchFormElement = document.getElementById('searchForm');
-
-        const inputHandler = function(e) {
-          notes.setSearchPhrase(e.target.value);
-        };
-
-        searchFormElement.addEventListener('input', inputHandler);
-
-        const addNoteButton = document.getElementById('createNoteButton');
-
-        customElements.define('add-note-view', AddNoteView);
-
-        const addNoteView = document.querySelector('add-note-view');
-
-        const addNote = () => {
-          addNoteView.shouldrender = true;
-        };
-
-        addNoteButton.addEventListener('click', addNote);
-
-        customElements.define('edit-note-view', EditNoteView);
-
+      import { mainHandler } from './mainHandler.js'; 
+      mainHandler();
     </script>
-
     <div id="notesContainer">
       <div class="header">
         <img 
@@ -87,7 +30,6 @@
       </div>
       <div class="search-row">
         <div class="search-container">
-          <!-- Search -->
           <img 
             src="./images/search_icon.svg" 
             alt="Search" 
@@ -100,21 +42,15 @@
           </input>
         </div>
       </div>
-
       <div class="createNoteContainer">
         <button id="createNoteButton" onclick="addNote()">
           Add New
         </button>
       </div>
-
       <notes-container></notes-container>
-
       <add-note-view></add-note-view>
-      
       <div id="no-notes-message"></div>
-
       <div id="notesList"></div>
-      
     </div>
   </body>
 </html>

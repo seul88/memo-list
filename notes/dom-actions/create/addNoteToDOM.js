@@ -1,5 +1,5 @@
 import { removeNoteFromDOM } from '../delete/removeNoteFromDOM.js';
-import { editNote } from '../edit/editNote.js';
+import { editNote } from '../edit/editNote.js'; 
 
 export const addNoteToDOM = (newNote, notesContainer) => {
   const container = document.getElementById('notesList');

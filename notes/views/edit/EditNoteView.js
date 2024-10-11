@@ -1,5 +1,5 @@
-import { editNote } from './dom-actions/edit/editNote.js';
-import { removeNoteFromDOM } from './dom-actions/delete/removeNoteFromDOM.js';
+import { editNote } from '../../dom-actions/edit/editNote.js';
+import { removeNoteFromDOM } from '../../dom-actions/delete/removeNoteFromDOM.js';
 
 export class EditNoteView extends HTMLElement {
     _id;
