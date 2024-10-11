@@ -26,3 +26,16 @@ dialog {
     position: relative;
     z-index: 2;
 }
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: white;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: rgba(27, 28, 30, 0.52);
+    border-radius: 12px;
+}
