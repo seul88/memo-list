@@ -10,22 +10,13 @@ export const addNoteToDOM = (note, containerClass) => {
   const inputFormsContainer = document.createElement('div');
   inputFormsContainer.classList.add('note-item-inputs');
 
+  const headerContainer = document.createElement('div');
+  headerContainer.classList.add('header-container');
+
   const noteTitle = document.createElement('div');
   noteTitle.textContent = note.title;
   noteTitle.classList.add('note-title-text');
-  inputFormsContainer.appendChild(noteTitle);
-
-  const noteBody = document.createElement('div');
-  noteBody.textContent = note.body;
-  noteBody.classList.add('note-body-text');
-  inputFormsContainer.appendChild(noteBody);
-
-  const creationDate = document.createElement('div');
-  const dateOptions = { month: 'long', day: 'numeric' };
-  const date = new Date(note.date);
-  creationDate.textContent = date.toLocaleDateString('en-US', dateOptions);
-  creationDate.classList.add('note-date-text');
-  inputFormsContainer.appendChild(creationDate);
+  headerContainer.appendChild(noteTitle);
 
   /* ACTION BUTTONS */
   const deleteNoteButton = document.createElement('img');
@@ -40,9 +31,25 @@ export const addNoteToDOM = (note, containerClass) => {
   editNoteButton.alt = 'Edit';
   editNoteButton.onclick = () => editNote(note);
 
+  headerContainer.appendChild(deleteNoteButton);
+  headerContainer.appendChild(editNoteButton);
+
+  inputFormsContainer.appendChild(headerContainer);
+
+  /* TEXT FIELDS */
+  const noteBody = document.createElement('div');
+  noteBody.textContent = note.body;
+  noteBody.classList.add('note-body-text');
+  inputFormsContainer.appendChild(noteBody);
+
+  const creationDate = document.createElement('div');
+  const dateOptions = { month: 'long', day: 'numeric' };
+  const date = new Date(note.date);
+  creationDate.textContent = date.toLocaleDateString('en-US', dateOptions);
+  creationDate.classList.add('note-date-text');
+  inputFormsContainer.appendChild(creationDate);
+
   noteContainer.appendChild(inputFormsContainer);
-  noteContainer.appendChild(deleteNoteButton);
-  noteContainer.appendChild(editNoteButton);
 
   return noteContainer;
 };

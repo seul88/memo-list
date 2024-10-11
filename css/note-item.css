@@ -1,6 +1,6 @@
 .note-item {
     width: 370px;
-
+    
     display: flex;
     gap: 16px;
     padding: 12px 16px;
@@ -9,13 +9,12 @@
     border: 1px solid #00000012;
     border-radius: 12px;
     box-shadow: 0px 4px 16px 0px #00000012;
-    opacity: 0px;
 }
 
 .note-item-inputs {
-    height: 112px;
-    width: 344px;
+    width: 364px;
     min-width: 250px;
+    max-height: 400px;
 
     display: flex;
     flex-direction: column;
@@ -29,6 +28,15 @@
     cursor: pointer;
 }
 
+.header-container {
+    display: flex;
+    flex-direction: row;
+
+    display: flex;
+    gap: 16px;
+    justify-content: space-around;
+}
+
 .note-title-text {
     height: 26px;
 
@@ -36,6 +44,8 @@
     color: #1B1C1E;
     font-weight: 500;
     line-height: 1.5em;
+    width: 90%;
+
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -43,7 +53,6 @@
 }
 
 .note-body-text {
-    height: 100px;
     display: -webkit-box;
 
     font-size: 0.875em;
@@ -54,7 +63,7 @@
     overflow: hidden;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 3; 
+    -webkit-line-clamp: 7; 
 }
 
 

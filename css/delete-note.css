@@ -1,15 +1,7 @@
-.delete-note-modal {
-
-}
-
 .delete-note-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
-}
-
-.delete-note-buttons-wrapper {
-
 }
 
 .delete-note-apply-button {
