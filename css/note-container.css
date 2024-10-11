@@ -20,6 +20,18 @@
     padding-bottom: 8px;
 }
 
+@media (max-width: 768px) {
+    #notesList {
+        height: 70vh;
+    }
+}
+
+@media (min-width: 768px) {
+    #notesList {
+        height: 500px;
+    }
+}
+
 .header {
     display: flex;
     gap: 8px;
