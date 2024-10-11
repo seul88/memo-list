@@ -7,7 +7,6 @@ export const addNoteToDOM = (newNote, notesContainer) => {
   const noteContainer = document.createElement('div');
   noteContainer.classList.add('note-item');
   noteContainer.id = newNote.id;
-  console.log(noteContainer.id)
 
   /* TEXT FIELDS */
   const inputFormsContainer = document.createElement('div');

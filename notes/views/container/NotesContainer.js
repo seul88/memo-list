@@ -4,7 +4,6 @@ import { hideNoNotesMessage } from '../../dom-actions/no-notes/hideNoNotesMessag
 import { filterNotes } from '../../dom-actions/filter/filterNotes.js';
 
 export class NotesContainer extends HTMLElement {
-
     _notes;
     _searchPhrase;
 
@@ -12,11 +11,11 @@ export class NotesContainer extends HTMLElement {
         super();
         this._notes = [];
         this._searchPhrase = '';
-    }
+    };
 
     static get observedAttributes() {
         return ['notes', 'searchphrase'];
-    }
+    };
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'notes') {
@@ -28,16 +27,7 @@ export class NotesContainer extends HTMLElement {
         } else if (name === 'searchphrase') {
             filterNotes(newValue, this);
         }
-    }
-
-    get notes() {
-        return this._notes;
-    }
-
-    set notes(notes) {
-        this._notes = notes;
-        this.setAttribute('notes', JSON.stringify(notes));
-    }
+    };
 
     getNotes() {
         return this.notes;
@@ -67,7 +57,7 @@ export class NotesContainer extends HTMLElement {
     setSearchPhrase(searchPhrase) {
         this._searchPhrase = searchPhrase;
         this.setAttribute('searchphrase', searchPhrase);
-    }
+    };
 
     editNote(id, details) {
         const index = this.notes.findIndex(item => item.id === id);
@@ -76,6 +66,15 @@ export class NotesContainer extends HTMLElement {
             ...this.notes[index],
             ...details
         };
+    };
+
+    get notes() {
+        return this._notes;
+    };
+
+    set notes(notes) {
+        this._notes = notes;
+        this.setAttribute('notes', JSON.stringify(notes));
     };
 
 };
