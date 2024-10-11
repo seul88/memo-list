@@ -1,15 +1,21 @@
 import { addNoteToDOM } from "../create/addNoteToDOM.js";
 
 export const filterNotes = (searchPhrase, notesContainer) => {
-    const parentElement = document.getElementById("notesList");
-    while (parentElement.firstChild) {
-        parentElement.removeChild(parentElement.firstChild);
+    const notesListContainer = document.getElementById("notesList");
+    while (notesListContainer.firstChild) {
+        notesListContainer.removeChild(notesListContainer.firstChild);
     }
 
     if (searchPhrase.length) {
         const filteredNotes = notesContainer.notes.filter(item => item.title.includes(searchPhrase) || item.body.includes(searchPhrase));
-        filteredNotes.forEach(note => addNoteToDOM(note, notesContainer));
+        filteredNotes.forEach(note => {
+            const newNoteElement = addNoteToDOM(note, 'note-item');
+            notesListContainer.appendChild(newNoteElement);
+        });
     } else {
-        notesContainer.notes.forEach(note => addNoteToDOM(note, notesContainer));
+        notesContainer.notes.forEach(note => {
+            const newNoteElement = addNoteToDOM(note, 'note-item');
+            notesListContainer.appendChild(newNoteElement);
+        });
     }
 };

@@ -47,7 +47,9 @@ export class NotesContainer extends HTMLElement {
 
         this.setAttribute('notes', JSON.stringify(newNotes));
         
-        addNoteToDOM(newNote, this);
+        const newNoteElement = addNoteToDOM(newNote, 'note-item');
+        const container = document.getElementById('notesList');
+        container.appendChild(newNoteElement);
     };
 
     removeNote(id) {

@@ -1,4 +1,4 @@
-import { createNewNoteForm } from "./createNewNoteForm.js";
+import { createNewNoteForm } from "../../dom-actions/create/createNewNoteForm.js";
 
 export class AddNoteView extends HTMLElement {
     _title;

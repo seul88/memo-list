@@ -1,5 +1,5 @@
-import { createEditedNoteView } from "./createEditedNoteView.js";
-import { createEditNoteForm } from "./createEditNoteForm.js";
+import { addNoteToDOM } from "../../dom-actions/create/addNoteToDOM.js";
+import { createEditNoteForm } from "../../dom-actions/edit/createEditNoteForm.js";
 
 export class EditNoteView extends HTMLElement {
     _id;
@@ -74,7 +74,7 @@ export class EditNoteView extends HTMLElement {
         this.shadowRoot.innerHTML = '';
         this.loadStyles();
        
-        const noteContainer = createEditedNoteView(note);
+        const noteContainer = addNoteToDOM(note, 'edit-note-wrapper');
       
         this.shadowRoot.appendChild(noteContainer);
         

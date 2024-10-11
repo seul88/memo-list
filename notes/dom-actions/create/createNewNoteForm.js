@@ -1,6 +1,4 @@
-export const createNewNoteForm = (
-    addNoteView
-) => {
+export const createNewNoteForm = (addNoteView) => {
     const container = document.createElement('div');
     container.id = 'addNoteForm';
 
