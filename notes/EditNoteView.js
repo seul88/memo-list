@@ -78,6 +78,9 @@ export class EditNoteView extends HTMLElement {
             date: new Date()
         };
 
+        const notesContainer = document.querySelector('notes-container');
+        notesContainer.editNote(this._id, newNote);
+        
         this.renderNote(newNote);
     };
 
