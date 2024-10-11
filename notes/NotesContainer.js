@@ -1,7 +1,7 @@
-import { addNoteToDOM } from './dom-actions/addNoteToDOM.js';
-import { displayNoNotesMessage } from './dom-actions/displayNoNotesMessage.js';
-import { hideNoNotesMessage } from './dom-actions/hideNoNotesMessage.js';
-import { filterNotes } from './dom-actions/filterNotes.js';
+import { addNoteToDOM } from './dom-actions/create/addNoteToDOM.js';
+import { displayNoNotesMessage } from './dom-actions/no-notes/displayNoNotesMessage.js';
+import { hideNoNotesMessage } from './dom-actions/no-notes/hideNoNotesMessage.js';
+import { filterNotes } from './dom-actions/filter/filterNotes.js';
 
 export class NotesContainer extends HTMLElement {
 
@@ -21,7 +21,7 @@ export class NotesContainer extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'notes') {
             if (JSON.parse(newValue).length  === 0) {
-                displayNoNotesMessage(this);
+                displayNoNotesMessage();
             } else {
                 hideNoNotesMessage();
             }

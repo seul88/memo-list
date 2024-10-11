@@ -1,4 +1,4 @@
-export const displayNoNotesMessage = (notesContainer) => {
+export const displayNoNotesMessage = () => {
     const noNotesDiv = document.getElementById('no-notes-message');
 
     const container = document.createElement('div');

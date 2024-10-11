@@ -7,9 +7,11 @@ export const editNote = (note) => {
 
     editComponent.title = note.title;
     editComponent.body = note.body;
-   
+    editComponent.id = note.id;
+
     editComponent.setAttribute('title', note.title);
     editComponent.setAttribute('body', note.body);
+    editComponent.setAttribute('id', note.id);
 
     noteElement.innerHTML = '';
 

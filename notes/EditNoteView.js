@@ -1,4 +1,8 @@
+import { editNote } from './dom-actions/edit/editNote.js';
+import { removeNoteFromDOM } from './dom-actions/delete/removeNoteFromDOM.js';
+
 export class EditNoteView extends HTMLElement {
+    _id;
     _title;
     _body;
 
@@ -8,15 +12,24 @@ export class EditNoteView extends HTMLElement {
         this.loadStyles();
         this._title = '';
         this._body = '';
+        this._id = null;
         this.render();
     }
 
     static get observedAttributes() {
-        return ['title', 'body'];
+        return ['title', 'body', 'id'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         this.render();
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    set id(id) {
+        this._id = id;
     }
 
     get title() {
@@ -25,7 +38,6 @@ export class EditNoteView extends HTMLElement {
 
     set title(title) {
         this._title = title;
-        // this.setAttribute('title', title);
     }
 
     get body() {
@@ -34,7 +46,6 @@ export class EditNoteView extends HTMLElement {
 
     set body(body) {
         this._body = body;
-        // this.setAttribute('body', body);
     }
 
     onCancelClick() {
@@ -50,7 +61,6 @@ export class EditNoteView extends HTMLElement {
     }
 
     onSaveClick() {
-
         const notes = document.querySelector('notes-container');
         // implement the function
        /* notes.updateNote(id, {
@@ -121,8 +131,10 @@ export class EditNoteView extends HTMLElement {
     clean() {
         this.shadowRoot.innerHTML = '';
         this.loadStyles();
+        const notesContainer = document.querySelector('notes-container');
         
         const newNote = {
+            id: this._id,
             title: this._title,
             body: this._body, 
             date: new Date()
@@ -130,7 +142,7 @@ export class EditNoteView extends HTMLElement {
         const noteContainer = document.createElement('div');
         noteContainer.classList.add('edit-note-wrapper');
         noteContainer.id = newNote.id;
-        
+
         /* TEXT FIELDS */
         const inputFormsContainer = document.createElement('div');
         inputFormsContainer.classList.add('note-item-inputs');
@@ -157,7 +169,7 @@ export class EditNoteView extends HTMLElement {
         deleteNoteButton.src = '../images/delete.svg';
         deleteNoteButton.classList.add('action-button');
         deleteNoteButton.alt = 'Delete';
-        deleteNoteButton.onclick = () => removeNoteFromDOM(newNote, notesContainer);
+        deleteNoteButton.onclick = () => removeNoteFromDOM(newNote);
       
         const editNoteButton = document.createElement('img');
         editNoteButton.src = '../images/edit.svg';

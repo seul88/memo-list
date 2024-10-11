@@ -1,23 +1,11 @@
-export const removeNoteFromDOM = (note, notesContainer) => {
+export const createDeleteForm = (onClose, note) => {
+    const notesContainer = document.querySelector('notes-container');
+    const dialog = document.getElementById(`delete-dialog-${note.id}`);
 
     const deleteNote = (note) => {
         notesContainer.removeNote(note.id);
         document.getElementById(note.id).remove();
     };
-
-    const onClose = (dialog) => {
-        document.querySelector('.dialog-overlay').style.display = 'none';
-        dialog.close();
-        document.getElementById(`delete-dialog-${note.id}`).remove();
-    };
-
-    const overlay = document.createElement('div');
-    overlay.classList.add('dialog-overlay');
-    document.body.appendChild(overlay);
-    document.querySelector('.dialog-overlay').style.display = 'block';
-
-    const dialog = document.createElement('dialog');
-    dialog.id = `delete-dialog-${note.id}`;
 
     const deleteNoteWrapper = document.createElement('div');
     deleteNoteWrapper.classList.add('delete-note-container');
@@ -47,8 +35,5 @@ export const removeNoteFromDOM = (note, notesContainer) => {
     };
     deleteNoteWrapper.appendChild(applyButton);
 
-    dialog.appendChild(deleteNoteWrapper);
-    const container = document.getElementById('notesContainer');
-    container.appendChild(dialog);
-    dialog.showModal();
+    return deleteNoteWrapper;
 };

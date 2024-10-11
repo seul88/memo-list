@@ -1,7 +1,6 @@
-import { addNoteToDOM } from "./addNoteToDOM.js";
+import { addNoteToDOM } from "../create/addNoteToDOM.js";
 
 export const filterNotes = (searchPhrase, notesContainer) => {
-    /* Remove displayed nodes before rerender */
     const parentElement = document.getElementById("notesList");
     while (parentElement.firstChild) {
         parentElement.removeChild(parentElement.firstChild);

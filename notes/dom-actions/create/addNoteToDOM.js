@@ -1,5 +1,5 @@
-import { removeNoteFromDOM } from './removeNoteFromDOM.js';
-import { editNote } from './editNote.js';
+import { removeNoteFromDOM } from '../delete/removeNoteFromDOM.js';
+import { editNote } from '../edit/editNote.js';
 
 export const addNoteToDOM = (newNote, notesContainer) => {
   const container = document.getElementById('notesList');
@@ -7,7 +7,8 @@ export const addNoteToDOM = (newNote, notesContainer) => {
   const noteContainer = document.createElement('div');
   noteContainer.classList.add('note-item');
   noteContainer.id = newNote.id;
-  
+  console.log(noteContainer.id)
+
   /* TEXT FIELDS */
   const inputFormsContainer = document.createElement('div');
   inputFormsContainer.classList.add('note-item-inputs');
@@ -34,13 +35,13 @@ export const addNoteToDOM = (newNote, notesContainer) => {
   deleteNoteButton.src = '../images/delete.svg';
   deleteNoteButton.classList.add('action-button');
   deleteNoteButton.alt = 'Delete';
-  deleteNoteButton.onclick = () => removeNoteFromDOM(newNote, notesContainer);
+  deleteNoteButton.onclick = () => removeNoteFromDOM(newNote);
 
   const editNoteButton = document.createElement('img');
   editNoteButton.src = '../images/edit.svg';
   editNoteButton.classList.add('action-button');
   editNoteButton.alt = 'Edit';
-  editNoteButton.onclick = () => editNote(newNote);
+  editNoteButton.onclick = () => editNote(newNote, notesContainer);
 
   noteContainer.appendChild(inputFormsContainer);
   noteContainer.appendChild(deleteNoteButton);
