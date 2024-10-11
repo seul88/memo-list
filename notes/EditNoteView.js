@@ -5,6 +5,7 @@ export class EditNoteView extends HTMLElement {
     _id;
     _title;
     _body;
+    _originalNote;
 
     constructor() {
         super();
@@ -13,15 +14,16 @@ export class EditNoteView extends HTMLElement {
         this._title = '';
         this._body = '';
         this._id = null;
-        this.render();
+        this._originalNote = null;
+        this.renderEditForm();
     }
 
     static get observedAttributes() {
-        return ['title', 'body', 'id'];
+        return ['title', 'body', 'id', 'originalnote'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        this.render();
+        this.renderEditForm();
     }
 
     get id() {
@@ -48,8 +50,16 @@ export class EditNoteView extends HTMLElement {
         this._body = body;
     }
 
+    get originalNote() {
+        return this._originalNote;
+    }
+
+    set originalNote(originalNote) {
+        this._originalNote = originalNote;
+    }
+
     onCancelClick() {
-        this.clean();
+        this.renderNote(this.originalNote);
     }
 
     onTitleChange(text) {
@@ -61,15 +71,14 @@ export class EditNoteView extends HTMLElement {
     }
 
     onSaveClick() {
-        const notes = document.querySelector('notes-container');
-        // implement the function
-       /* notes.updateNote(id, {
-            title: this.title,
-            body: this.body, 
-            date: Date.now()
-        });
-        */ 
-        this.clean(); // todo: split the function to save case & cancel case
+        const newNote = {
+            id: this._id,
+            title: this._title,
+            body: this._body, 
+            date: new Date()
+        };
+
+        this.renderNote(newNote);
     };
 
     loadStyles() {
@@ -82,7 +91,7 @@ export class EditNoteView extends HTMLElement {
         this.shadowRoot.appendChild(style);
     }
 
-    render() {
+    renderEditForm() {
         this.shadowRoot.innerHTML = '';
         this.loadStyles();
         const container = document.createElement('div');
@@ -128,38 +137,31 @@ export class EditNoteView extends HTMLElement {
         this.shadowRoot.appendChild(container);
     }
 
-    clean() {
+    renderNote(note) {
         this.shadowRoot.innerHTML = '';
         this.loadStyles();
-        const notesContainer = document.querySelector('notes-container');
-        
-        const newNote = {
-            id: this._id,
-            title: this._title,
-            body: this._body, 
-            date: new Date()
-        };
+       
         const noteContainer = document.createElement('div');
         noteContainer.classList.add('edit-note-wrapper');
-        noteContainer.id = newNote.id;
+        noteContainer.id = note.id;
 
         /* TEXT FIELDS */
         const inputFormsContainer = document.createElement('div');
         inputFormsContainer.classList.add('note-item-inputs');
       
         const noteTitle = document.createElement('div');
-        noteTitle.textContent = newNote.title;
+        noteTitle.textContent = note.title;
         noteTitle.classList.add('note-title-text');
         inputFormsContainer.appendChild(noteTitle);
       
         const noteBody = document.createElement('div');
-        noteBody.textContent = newNote.body;
+        noteBody.textContent = note.body;
         noteBody.classList.add('note-body-text');
         inputFormsContainer.appendChild(noteBody);
       
         const creationDate = document.createElement('div');
         const dateOptions = { month: 'long', day: 'numeric' };
-        const date = new Date(newNote.date);
+        const date = new Date(note.date);
         creationDate.textContent = date.toLocaleDateString('en-US', dateOptions);
         creationDate.classList.add('note-date-text');
         inputFormsContainer.appendChild(creationDate);
@@ -169,13 +171,13 @@ export class EditNoteView extends HTMLElement {
         deleteNoteButton.src = '../images/delete.svg';
         deleteNoteButton.classList.add('action-button');
         deleteNoteButton.alt = 'Delete';
-        deleteNoteButton.onclick = () => removeNoteFromDOM(newNote);
+        deleteNoteButton.onclick = () => removeNoteFromDOM(note);
       
         const editNoteButton = document.createElement('img');
         editNoteButton.src = '../images/edit.svg';
         editNoteButton.classList.add('action-button');
         editNoteButton.alt = 'Edit';
-        editNoteButton.onclick = () => editNote(newNote);
+        editNoteButton.onclick = () => editNote(note);
       
         noteContainer.appendChild(inputFormsContainer);
         noteContainer.appendChild(deleteNoteButton);

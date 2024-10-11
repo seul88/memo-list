@@ -8,10 +8,13 @@ export const editNote = (note) => {
     editComponent.title = note.title;
     editComponent.body = note.body;
     editComponent.id = note.id;
+    const originalNote = { ...note };
+    editComponent.originalNote = originalNote;
 
     editComponent.setAttribute('title', note.title);
     editComponent.setAttribute('body', note.body);
     editComponent.setAttribute('id', note.id);
+    editComponent.setAttribute('originalnote', originalNote);
 
     noteElement.innerHTML = '';
 
